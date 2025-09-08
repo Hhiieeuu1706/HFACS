@@ -1,0 +1,56 @@
+{
+  "scenario_name": "Organizational Training Deficiency (HFACS Level 4 Focus)",
+  "description": "A complex dual-failure scenario, for which training was removed by the organization to save costs, leaves the crew unprepared and unable to diagnose the evolving situation.",
+  "valid_flight_phases": ["APPROACH_LANDING"],
+  "telemetry_events": [
+    {
+      "event_type": "anomaly",
+      "trigger_condition": "flap_lever_position moves to 3",
+      "description": "A flap jam occurs, but the asymmetry protection system also fails.",
+      "parameters": {
+        "right_flap_angle": {
+          "jam_at_value": 18.5
+        },
+        "asymmetry_protection_system": {
+          "fail_to_activate": true
+        },
+        "ecam_alerts": [
+          "F/CTL FLAP SLOW"
+        ]
+      }
+    }
+  ],
+  "maintenance_logs": [
+    {
+      "entry_date": "T-1 month",
+      "report": "Standard C-Check.",
+      "action": "All systems checked normal."
+    }
+  ],
+  "narrative_report": {
+    "source": "CVR Simulation",
+    "transcript": [
+      { "relative_timestamp": "T+0s", "sound": "Single chime (Master Caution)." },
+      { "relative_timestamp": "T+2s", "speaker": "FO", "dialogue": "It just says 'slow'. Should we continue?" },
+      { "relative_timestamp": "T+5s", "speaker": "CPT", "dialogue": "I... I don't know. This isn't in the book. We were never trained for this scenario. Let's declare an emergency and hold." }
+    ],
+    "investigation_notes": "Airline training records show that dual-failure scenarios were removed from the recurrent simulator training syllabus 2 years prior to the incident."
+  },
+  "context_data": {
+    "weather": "IMC (Instrument Meteorological Conditions), low clouds, rain.",
+    "flight_phase_details": "Approach in challenging weather, high workload.",
+    "atc_communication": "Standard."
+  },
+  "ground_truth": {
+    "is_anomaly": true,
+    "hfacs_analysis": {
+      "winning_level": "Level 2: Preconditions for Unsafe Acts",
+      "evidence_tags": [
+        "L1_CHOICE_DECISIONS",
+        "L2_CONFUSION",
+        "L3_FAILURE_TO_ADMINISTER_PROPER_TRAINING",
+        "L2_INADEQUATE_PREPARATION_SKILL"
+      ]
+    }
+  }
+}

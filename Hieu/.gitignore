@@ -1,0 +1,6 @@
+config/secrets/
+*.tmp
+desktop.ini
+.venv/
+Da
+project_outputs - OLD/

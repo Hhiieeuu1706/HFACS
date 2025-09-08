@@ -1,0 +1,20 @@
+{
+    "source": "CVR Simulation",
+    "transcript": [
+        {
+            "relative_timestamp": "T+0s",
+            "sound": "Single chime (Master Caution)."
+        },
+        {
+            "relative_timestamp": "T+2s",
+            "speaker": "FO",
+            "dialogue": "It just says 'slow'. Should we continue?"
+        },
+        {
+            "relative_timestamp": "T+5s",
+            "speaker": "CPT",
+            "dialogue": "I... I don't know. This isn't in the book. We were never trained for this scenario. Let's declare an emergency and hold."
+        }
+    ],
+    "investigation_notes": "Airline training records show that dual-failure scenarios were removed from the recurrent simulator training syllabus 2 years prior to the incident."
+}

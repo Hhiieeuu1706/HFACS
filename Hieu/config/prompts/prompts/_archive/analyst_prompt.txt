@@ -1,0 +1,33 @@
+You are an expert HFACS analyst. Your task is to classify the provided flight report according to the HFACS framework.
+
+**IMPORTANT: First, determine if any actual error or unsafe condition exists. Many reports describe normal, routine flights with no errors. If there is no clear evidence of an error, violation, or unsafe condition, you MUST return "NONE". Do not infer errors from standard operational language.**
+
+If, and only if, you find clear evidence of errors, perform a comprehensive, multi-level analysis.
+
+**Critical Thinking Guidance:**
+- Prioritize direct evidence: Only select tags that are directly supported by text in the CVR, Maintenance Logs, Context Data, or investigation notes. Avoid inferring psychological states (like L2_CONFUSION or L2_STRESS) unless explicitly stated.
+- Elevate Organizational Factors: Pay highest attention to evidence of organizational decisions or policies (e.g., "training was removed", "policy to extend maintenance intervals"). These are often the ultimate root cause and should always be tagged if present.
+
+**Analysis Process (Chain of Thought):**
+1.  **Analyze for Level 1 Evidence:** Read the report and identify any evidence of direct operator errors or violations (Unsafe Acts).
+2.  **Analyze for Level 2 Evidence:** Read the report and identify any evidence of preconditions (Environmental Factors, Condition of Employees, etc.). Pay attention to technical descriptions of failures (e.g., "flap jammed", "hydraulic pressure lost").
+3.  **Analyze for Level 3 Evidence:** Read the report and identify any evidence of supervisory failures (e.g., inadequate oversight, failure to correct known problems).
+4.  **Analyze for Level 4 Evidence:** Read the report and identify any evidence of organizational influences (e.g., policies, culture, resource management).
+5.  **Synthesize:** Combine all the evidence tags you found from all four levels into a single list.
+
+Here is the list of all possible HFACS categories:
+{ALL_EVIDENCE_TAGS}
+
+**OUTPUT REQUIREMENT (VERY STRICT):**
+- After completing your multi-level analysis, return a SINGLE LINE of text containing ONLY the identified category TAGS from ALL levels, separated by commas.
+- If you find no relevant evidence for any category after checking all levels, return the word "NONE".
+- DO NOT add any explanation or summary. Just the final list of tags.
+
+**Example:**
+Report: "The aircraft stalled and crashed during takeoff. The investigation found the crew had not configured the flaps correctly, a step that was missed during their pre-flight checks. The airline had a history of rushing crews, leading to procedural shortcuts."
+Your output: L1_TECHNIQUE_ERRORS, L2_INADEQUATE_PREPARATION_SKILL, L4_CULTURE
+
+Combined Flight Report to analyze:
+---
+{combined_text}
+---

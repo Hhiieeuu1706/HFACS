@@ -1,0 +1,17 @@
+[
+    {
+        "entry_date": "T-3 months",
+        "report": "PIREP: Pilot reported noticeable vibration from Engine 1 during climb, especially above 85% N1.",
+        "action": "Ground test performed. Vibration present but within acceptable limits. Monitored for trend."
+    },
+    {
+        "entry_date": "T-1 month",
+        "report": "PIREP: Increased vibration from Engine 1 noted again. Request engineering review.",
+        "action": "Engineering review deferred due to high operational tempo and budget constraints for non-essential parts replacement. Per company policy, deferral is authorized if vibration is below critical limit."
+    },
+    {
+        "entry_date": "T-2 days",
+        "report": "Routine check.",
+        "action": "Engine 1 vibration noted as 'trending up' but still within deferred maintenance policy limits. No action taken."
+    }
+]

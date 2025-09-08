@@ -1,0 +1,31 @@
+{
+    "scenario_name": "flap_jam",
+    "winning_level_got": "Level 3: Unsafe Supervision",
+    "winning_level_expected": "Level 3: Unsafe Supervision",
+    "tags_got": [
+        "L1_MISJUDGMENTS",
+        "L2_EQUIPMENT_AND_CONTROLS",
+        "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD",
+        "L4_OPERATIONS_PROCESS"
+    ],
+    "tags_expected": [
+        "L2_EQUIPMENT_AND_CONTROLS",
+        "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD"
+    ],
+    "scores_per_level": {
+        "Level 1: Unsafe Acts": 25,
+        "Level 2: Preconditions for Unsafe Acts": 20,
+        "Level 3: Unsafe Supervision": 50,
+        "Level 4: Organizational Influences": 35
+    },
+    "tags_per_level": {
+        "Final": [
+            "L1_MISJUDGMENTS",
+            "L2_EQUIPMENT_AND_CONTROLS",
+            "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD",
+            "L4_OPERATIONS_PROCESS"
+        ]
+    },
+    "match_percentage": 83.33,
+    "status": "COMPLETED"
+}

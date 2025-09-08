@@ -1,0 +1,12 @@
+{
+    "is_anomaly": true,
+    "hfacs_analysis": {
+        "winning_level": "Level 2: Preconditions for Unsafe Acts",
+        "evidence_tags": [
+            "L1_CHOICE_DECISIONS",
+            "L2_CONFUSION",
+            "L3_FAILURE_TO_ADMINISTER_PROPER_TRAINING",
+            "L2_INADEQUATE_PREPARATION_SKILL"
+        ]
+    }
+}

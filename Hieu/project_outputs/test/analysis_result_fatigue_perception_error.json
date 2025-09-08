@@ -1,0 +1,22 @@
+{
+    "scenario_name": "fatigue_perception_error",
+    "winning_level_got": "No Fault",
+    "winning_level_expected": "Level 3: Unsafe Supervision",
+    "tags_got": [],
+    "tags_expected": [
+        "L1_TECHNIQUE_ERRORS",
+        "L2_EQUIPMENT_AND_CONTROLS",
+        "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD"
+    ],
+    "scores_per_level": {
+        "Level 1: Unsafe Acts": 0,
+        "Level 2: Preconditions for Unsafe Acts": 0,
+        "Level 3: Unsafe Supervision": 0,
+        "Level 4: Organizational Influences": 0
+    },
+    "tags_per_level": {
+        "Final": []
+    },
+    "match_percentage": 0.0,
+    "status": "COMPLETED"
+}

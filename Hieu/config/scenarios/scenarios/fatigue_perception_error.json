@@ -1,0 +1,55 @@
+{
+  "scenario_name": "Cognitive Degradation due to Fatigue (HFACS Level 2 Focus)",
+  "description": "Accumulated fatigue degrades the crew's cognitive performance, leading to a significant delay in recognizing and reacting to a clear flap asymmetry warning.",
+  "valid_flight_phases": ["APPROACH_LANDING"],
+  "telemetry_events": [
+    {
+      "event_type": "anomaly",
+      "trigger_condition": "flap_lever_position moves to 2",
+      "description": "Right flap fails to extend to CONF 2, but crew reaction is delayed.",
+      "parameters": {
+        "right_flap_angle": {
+          "jam_at_value": 10.0
+        },
+        "pilot_reaction_time_seconds": {
+          "delay": 8.0
+        },
+        "ecam_alerts": [
+          "F/CTL FLAP ASYM"
+        ]
+      }
+    }
+  ],
+  "maintenance_logs": [
+    {
+      "entry_date": "T-1 flight",
+      "report": "PIREP: 'FLAP SLOW' caution on right flap.",
+      "action": "SFCC reset, ground test did not reproduce the fault. Aircraft released."
+    }
+  ],
+  "narrative_report": {
+    "source": "CVR Simulation",
+    "transcript": [
+      { "relative_timestamp": "T+0s", "sound": "Single chime (Master Caution)." },
+      { "relative_timestamp": "T+1s", "sound": "(Silence for several seconds)" },
+      { "relative_timestamp": "T+8s", "speaker": "CPT", "dialogue": "Hey, we're rolling. Check flaps... Asymmetry!" },
+      { "relative_timestamp": "T+10s", "speaker": "FO", "dialogue": "Oh... Right. Correcting." }
+    ]
+  },
+  "context_data": {
+    "weather": "Night flight, calm conditions, low radio traffic.",
+    "flight_phase_details": "Late night arrival, crew near end of duty limits.",
+    "atc_communication": "Minimal."
+  },
+  "ground_truth": {
+    "is_anomaly": true,
+    "hfacs_analysis": {
+      "winning_level": "Level 3: Unsafe Supervision",
+      "evidence_tags": [
+        "L1_TECHNIQUE_ERRORS",
+        "L2_EQUIPMENT_AND_CONTROLS",
+        "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD"
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+    "is_anomaly": true,
+    "hfacs_analysis": {
+        "winning_level": "Level 3: Unsafe Supervision",
+        "evidence_tags": [
+            "L1_TECHNIQUE_ERRORS",
+            "L2_DISTRACTION",
+            "L3_FAILURE_TO_PROVIDE_OVERSIGHT"
+        ]
+    }
+}

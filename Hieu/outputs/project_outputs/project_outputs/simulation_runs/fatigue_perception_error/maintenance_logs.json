@@ -1,0 +1,7 @@
+[
+    {
+        "entry_date": "T-1 flight",
+        "report": "PIREP: 'FLAP SLOW' caution on right flap.",
+        "action": "SFCC reset, ground test did not reproduce the fault. Aircraft released."
+    }
+]

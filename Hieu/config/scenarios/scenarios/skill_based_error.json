@@ -1,0 +1,59 @@
+{
+  "scenario_name": "Pilot Skill-Based Error (HFACS Level 1 Focus)",
+  "description": "A momentary lapse in attention causes the pilot to incorrectly select Flap FULL at a high speed, triggering an overspeed warning. All aircraft systems were functioning perfectly.",
+  "valid_flight_phases": ["APPROACH_LANDING"],
+  "telemetry_events": [
+    {
+      "event_type": "anomaly",
+      "trigger_condition": "random_time_in_phase",
+      "valid_flight_phases": ["APPROACH_LANDING"],
+      "description": "Pilot incorrectly moves flap lever from 1 directly to FULL.",
+      "parameters": {
+        "flap_lever_position": {
+          "jump_to_value": 4
+        },
+        "vertical_g_force": {
+          "spike_to_value": 1.5
+        },
+        "ecam_alerts": [
+          "OVERSPEED"
+        ]
+      }
+    }
+  ],
+  "maintenance_logs": [
+    {
+      "entry_date": "T-1 week",
+      "report": "Scheduled A-Check performed.",
+      "action": "All flight control systems checked and found to be operating normally. Aircraft is in perfect technical condition."
+    }
+  ],
+  "narrative_report": {
+    "source": "CVR Simulation",
+    "transcript": [
+      { "relative_timestamp": "T-5s", "speaker": "FO", "dialogue": "Wow, what a game last night, huh?" },
+      { "relative_timestamp": "T-4s", "speaker": "CPT", "dialogue": "Tell me about it. Incredible." },
+      { "relative_timestamp": "T-2s", "sound": "Sound of flap lever moving rapidly through multiple detents, much faster than standard procedure." },
+      { "relative_timestamp": "T+0s", "sound": "Continuous OVERSPEED warning." },
+      { "relative_timestamp": "T+1s", "speaker": "CPT", "dialogue": "Speed! My controls!" },
+      { "relative_timestamp": "T+3s", "speaker": "FO", "dialogue": "Sorry... my mistake. I was distracted for a second there." }
+    ]
+  },
+  "context_data": {
+    "weather": "CAVOK (Ceiling and Visibility OK), light winds.",
+    "flight_phase_details": "Standard approach, no time pressure from ATC.",
+    "atc_communication": "Standard approach clearances.",
+    "crew_pairing_details": "The Captain is known for a very relaxed, hands-off approach to supervision, especially with new First Officers. The FO recently completed line training."
+  },
+  "ground_truth": {
+    "is_anomaly": true,
+    "hfacs_analysis": {
+      "winning_level": "Level 3: Unsafe Supervision",
+      "evidence_tags": [
+        "L1_TECHNIQUE_ERRORS",
+        "L2_DISTRACTION",
+        "L3_FAILURE_TO_PROVIDE_OVERSIGHT"
+      ]
+    }
+  }
+}

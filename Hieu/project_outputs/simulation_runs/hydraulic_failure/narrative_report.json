@@ -1,0 +1,24 @@
+{
+    "source": "CVR Simulation",
+    "transcript": [
+        {
+            "relative_timestamp": "T+0s",
+            "sound": "ECAM warning chime."
+        },
+        {
+            "relative_timestamp": "T+1s",
+            "speaker": "PF",
+            "dialogue": "Hydraulic... Green system low pressure."
+        },
+        {
+            "relative_timestamp": "T+5s",
+            "speaker": "PM",
+            "dialogue": "Okay, ECAM actions. Let's see what we've lost... Okay, landing gear gravity extension will be required... and slat and flap slow."
+        },
+        {
+            "relative_timestamp": "T+15s",
+            "speaker": "PF",
+            "dialogue": "Right. Let's brief that. We need to configure much earlier on the approach. Call for flaps at 15 miles out, not 10. And anticipate the gravity gear extension checklist."
+        }
+    ]
+}

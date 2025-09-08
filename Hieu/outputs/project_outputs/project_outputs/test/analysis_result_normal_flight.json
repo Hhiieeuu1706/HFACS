@@ -1,0 +1,13 @@
+{
+    "scenario_name": "normal_flight",
+    "winning_level_got": "No Fault",
+    "winning_level_expected": "No Fault",
+    "tags_got": [],
+    "tags_expected": [],
+    "scores_per_level": {},
+    "tags_per_level": {
+        "Final": []
+    },
+    "match_percentage": 100.0,
+    "status": "COMPLETED"
+}

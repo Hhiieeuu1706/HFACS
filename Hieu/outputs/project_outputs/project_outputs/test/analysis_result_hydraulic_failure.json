@@ -1,0 +1,31 @@
+{
+    "scenario_name": "hydraulic_failure",
+    "winning_level_got": "Level 3: Unsafe Supervision",
+    "winning_level_expected": "Level 3: Unsafe Supervision",
+    "tags_got": [
+        "L1_RULE_BASED_DECISIONS",
+        "L2_EQUIPMENT_AND_CONTROLS",
+        "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD"
+    ],
+    "tags_expected": [
+        "L1_MISJUDGMENTS",
+        "L2_EQUIPMENT_AND_CONTROLS",
+        "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD",
+        "L4_PROCEDURES_PROCESS"
+    ],
+    "scores_per_level": {
+        "Level 1: Unsafe Acts": 20,
+        "Level 2: Preconditions for Unsafe Acts": 20,
+        "Level 3: Unsafe Supervision": 50,
+        "Level 4: Organizational Influences": 0
+    },
+    "tags_per_level": {
+        "Final": [
+            "L1_RULE_BASED_DECISIONS",
+            "L2_EQUIPMENT_AND_CONTROLS",
+            "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD"
+        ]
+    },
+    "match_percentage": 78.57,
+    "status": "COMPLETED"
+}

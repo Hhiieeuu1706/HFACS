@@ -1,0 +1,32 @@
+{
+    "scenario_name": "skill_based_error",
+    "winning_level_got": "Level 3: Unsafe Supervision",
+    "winning_level_expected": "Level 3: Unsafe Supervision",
+    "tags_got": [
+        "L1_ATTENTION_FAILURES",
+        "L2_DISTRACTION",
+        "L3_FAILURE_TO_CORRECT_INAPPROPRIATE_BEHAVIOR",
+        "L3_FAILURE_TO_PROVIDE_OVERSIGHT"
+    ],
+    "tags_expected": [
+        "L1_TECHNIQUE_ERRORS",
+        "L2_DISTRACTION",
+        "L3_FAILURE_TO_PROVIDE_OVERSIGHT"
+    ],
+    "scores_per_level": {
+        "Level 1: Unsafe Acts": 15,
+        "Level 2: Preconditions for Unsafe Acts": 15,
+        "Level 3: Unsafe Supervision": 65,
+        "Level 4: Organizational Influences": 0
+    },
+    "tags_per_level": {
+        "Final": [
+            "L1_ATTENTION_FAILURES",
+            "L2_DISTRACTION",
+            "L3_FAILURE_TO_PROVIDE_OVERSIGHT",
+            "L3_FAILURE_TO_CORRECT_INAPPROPRIATE_BEHAVIOR"
+        ]
+    },
+    "match_percentage": 78.57,
+    "status": "COMPLETED"
+}

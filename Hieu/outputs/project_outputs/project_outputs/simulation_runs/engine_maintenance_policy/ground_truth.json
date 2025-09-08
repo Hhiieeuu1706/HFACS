@@ -1,0 +1,12 @@
+{
+    "is_anomaly": true,
+    "hfacs_analysis": {
+        "winning_level": "Level 4: Organizational Influences",
+        "evidence_tags": [
+            "L2_EQUIPMENT_AND_CONTROLS",
+            "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD",
+            "L4_MONETARY_RESOURCES",
+            "L4_POLICIES"
+        ]
+    }
+}

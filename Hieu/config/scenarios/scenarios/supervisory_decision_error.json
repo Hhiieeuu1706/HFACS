@@ -1,0 +1,54 @@
+{
+  "scenario_name": "Unsafe Supervisory Decision (HFACS Level 3 Focus)",
+  "description": "A known fault with a flap motor was intentionally deferred by maintenance supervision to meet operational demand, directly leading to an in-flight failure.",
+  "valid_flight_phases": ["APPROACH_LANDING"],
+  "telemetry_events": [
+    {
+      "event_type": "anomaly",
+      "trigger_condition": "flap_lever_position moves to 2",
+      "description": "The known faulty left flap motor fails completely upon selection.",
+      "parameters": {
+        "left_flap_motor_current": {
+          "spike_and_fail": true
+        },
+        "left_flap_angle": {
+          "jam_at_value": 10.0
+        },
+        "ecam_alerts": [
+          "F/CTL FLAP SYS 1 FAULT"
+        ]
+      }
+    }
+  ],
+  "maintenance_logs": [
+    {
+      "entry_date": "T-2 days",
+      "report": "Engineering Team B recommends in-depth inspection of left flap drive motor.",
+      "action": "SHIFT SUPERVISOR DECISION: Defer maintenance action to ensure aircraft availability for weekend schedule. Action scheduled for Tuesday."
+    }
+  ],
+  "narrative_report": {
+    "source": "CVR Simulation",
+    "transcript": [
+      { "relative_timestamp": "T+0s", "sound": "ECAM warning chime." },
+      { "relative_timestamp": "T+1s", "speaker": "FO", "dialogue": "Flap system fault. Okay, ECAM actions." },
+      { "relative_timestamp": "T+3s", "speaker": "CPT", "dialogue": "It finally failed. I saw that in the logbook." }
+    ]
+  },
+  "context_data": {
+    "weather": "Normal",
+    "flight_phase_details": "Approach",
+    "atc_communication": "Standard."
+  },
+  "ground_truth": {
+    "is_anomaly": true,
+    "hfacs_analysis": {
+      "winning_level": "Level 3: Unsafe Supervision",
+      "evidence_tags": [
+        "L2_EQUIPMENT_AND_CONTROLS",
+        "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD",
+        "L4_POLICIES"
+      ]
+    }
+  }
+}

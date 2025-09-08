@@ -1,0 +1,60 @@
+{
+  "scenario_name": "Flap System Fault due to Position Sensor Failure",
+  "description": "During initial approach, a faulty flap position sensor on the right wing sends conflicting data to the flight computers (SFCC). While the flaps extend physically, the system logic detects a discrepancy, flags a fault, and prevents further flap extension.",
+  
+  "valid_flight_phases": ["APPROACH_LANDING"],
+
+  "telemetry_events": [
+    {
+      "event_type": "anomaly",
+      "trigger_condition": "flap_lever_position moves to 1",
+      "description": "When flap lever is moved from CONF 0 to CONF 1, a sensor on the right flap fails to report the movement.",
+      "parameters": {
+        "right_flap_sensor_faulty_output": {
+          "stuck_at_value": 0.0
+        },
+        "ecam_alerts": [
+          "F/CTL FLAP SYS 2 FAULT"
+        ]
+      }
+    }
+  ],
+
+  "maintenance_logs": [
+    {
+      "entry_date": "T-2 weeks",
+      "report": "PIREP: Intermittent F/CTL FLAP SYS 2 FAULT warning appeared while parked at the gate, then cleared on its own.",
+      "action": "SFCC 2 BITE test performed, no stored faults found. System reset. Aircraft released for service."
+    }
+  ],
+
+  "narrative_report": {
+    "source": "CVR Simulation",
+    "transcript": [
+      { "relative_timestamp": "T-3s", "speaker": "PF", "dialogue": "Flaps 1." },
+      { "relative_timestamp": "T-2s", "speaker": "PM", "dialogue": "Speed checked, Flaps 1." },
+      { "relative_timestamp": "T+0s", "sound": "ECAM warning chime (no unusual mechanical sounds)." },
+      { "relative_timestamp": "T+1s", "speaker": "PM", "dialogue": "We have an ECAM... Flight Controls... Flap System 2 Fault." },
+      { "relative_timestamp": "T+3s", "speaker": "PF", "dialogue": "Okay, let's see. The flaps appear to be out. E/WD shows flaps at 1. Status page?" },
+      { "relative_timestamp": "T+6s", "speaker": "PM", "dialogue": "Status page confirms. We have a fault, but flaps are extended to CONF 1. We'll need to advise ATC of a non-normal configuration." }
+    ]
+  },
+
+  "context_data": {
+    "weather": "Good.",
+    "flight_phase_details": "Initial Approach, ~20 NM from airport.",
+    "atc_communication": "[Callsign], be advised we have a minor flight control issue and will be landing with a non-normal flap configuration. Requesting a slightly longer final approach, no emergency declared at this time."
+  },
+
+  "ground_truth": {
+    "is_anomaly": true,
+    "hfacs_analysis": {
+      "winning_level": "Level 3: Unsafe Supervision",
+      "evidence_tags": [
+        "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD",
+        "L2_AUTOMATION_RELIABILITY",
+        "L2_INTERFACES_AND_DISPLAYS"
+      ]
+    }
+  }
+}

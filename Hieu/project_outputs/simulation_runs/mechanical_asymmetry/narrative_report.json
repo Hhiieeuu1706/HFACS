@@ -1,0 +1,37 @@
+{
+    "source": "CVR Simulation",
+    "transcript": [
+        {
+            "relative_timestamp": "T-5s",
+            "speaker": "PF",
+            "dialogue": "Flaps 3."
+        },
+        {
+            "relative_timestamp": "T-4s",
+            "sound": "Flap lever movement sound."
+        },
+        {
+            "relative_timestamp": "T-2s",
+            "sound": "Loud, sharp 'CRACK' sound from the left wing area."
+        },
+        {
+            "relative_timestamp": "T-1s",
+            "speaker": "PM",
+            "dialogue": "What was that noise?"
+        },
+        {
+            "relative_timestamp": "T+0s",
+            "sound": "ECAM warning chime."
+        },
+        {
+            "relative_timestamp": "T+1s",
+            "speaker": "PF",
+            "dialogue": "We've got a flap fault. Flaps locked! Okay, I have control. Maintain speed."
+        },
+        {
+            "relative_timestamp": "T+3s",
+            "speaker": "PM",
+            "dialogue": "ECAM confirms, flaps locked. We have an asymmetric condition. Go-around procedure."
+        }
+    ]
+}

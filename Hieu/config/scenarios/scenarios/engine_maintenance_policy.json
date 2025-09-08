@@ -1,0 +1,71 @@
+{
+  "scenario_name": "engine_maintenance_policy",
+  "description": "An engine fails during climb due to a known vibration issue that was repeatedly deferred by maintenance under a cost-saving policy. The failure is traceable to an organizational decision.",
+  "valid_flight_phases": ["CLIMB"],
+  "telemetry_events": [
+    {
+      "event_type": "anomaly",
+      "trigger_condition": "random_time_in_phase",
+      "valid_flight_phases": ["CLIMB"],
+      "description": "Engine 1 experiences severe vibration and EGT spike, leading to failure.",
+      "parameters": {
+        "engine_1_vibration_n1": {
+          "spike_to_value": 4.5
+        },
+        "engine_1_egt_degc": {
+          "spike_to_value": 1100
+        },
+        "ecam_alerts": [
+          "ENG 1 VIB",
+          "ENG 1 STALL",
+          "ENG 1 FIRE"
+        ],
+        "aircraft_action": {
+          "perform_engine_fire_procedure": true
+        }
+      }
+    }
+  ],
+  "maintenance_logs": [
+    {
+      "entry_date": "T-3 months",
+      "report": "PIREP: Pilot reported noticeable vibration from Engine 1 during climb, especially above 85% N1.",
+      "action": "Ground test performed. Vibration present but within acceptable limits. Monitored for trend."
+    },
+    {
+      "entry_date": "T-1 month",
+      "report": "PIREP: Increased vibration from Engine 1 noted again. Request engineering review.",
+      "action": "Engineering review deferred due to high operational tempo and budget constraints for non-essential parts replacement. Per company policy, deferral is authorized if vibration is below critical limit."
+    },
+    {
+      "entry_date": "T-2 days",
+      "report": "Routine check.",
+      "action": "Engine 1 vibration noted as 'trending up' but still within deferred maintenance policy limits. No action taken."
+    }
+  ],
+  "narrative_report": {
+    "source": "CVR Simulation",
+    "transcript": [
+      { "relative_timestamp": "T+0s", "sound": "Loud bang followed by severe shuddering vibration." },
+      { "relative_timestamp": "T+1s", "speaker": "CPT", "dialogue": "Engine failure! Engine 1 fire!" },
+      { "relative_timestamp": "T+2s", "speaker": "FO", "dialogue": "Master warning! ECAM, engine fire procedure." }
+    ]
+  },
+  "context_data": {
+    "weather": "CAVOK",
+    "flight_phase_details": "Climbing through FL180.",
+    "company_policy_excerpt": "Memo #2021-04: To reduce operational costs, non-critical component replacements may be deferred until the next major scheduled maintenance check, provided that performance metrics remain within published deferral limits."
+  },
+  "ground_truth": {
+    "is_anomaly": true,
+    "hfacs_analysis": {
+      "winning_level": "Level 4: Organizational Influences",
+      "evidence_tags": [
+        "L2_EQUIPMENT_AND_CONTROLS",
+        "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD",
+        "L4_MONETARY_RESOURCES",
+        "L4_POLICIES"
+      ]
+    }
+  }
+}

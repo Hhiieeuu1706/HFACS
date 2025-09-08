@@ -1,0 +1,75 @@
+{
+  "scenario_name": "Asymmetric Flap Jam due to Drive Mechanism Failure",
+  "description": "A latent mechanical fault in the right wing flap drive mechanism, inadequately addressed in prior maintenance, manifests during final approach, causing an asymmetric flap condition and forcing a go-around.",
+  
+  "valid_flight_phases": ["APPROACH_LANDING"],
+
+  "telemetry_events": [
+    {
+      "event_type": "anomaly",
+      "trigger_condition": "flap_lever_position moves to 3",
+      "description": "When flap lever is moved from CONF 2 to CONF 3, the right flap jams.",
+      "parameters": {
+        "right_flap_angle": {
+          "jam_at_value": 18.5
+        },
+        "roll_angle": {
+          "induced_roll_degrees": 5.0
+        },
+        "sidestick_input_lat": {
+          "corrective_input": -0.2
+        },
+        "autopilot_status": {
+          "disconnect": true
+        },
+        "ecam_alerts": [
+          "F/CTL FLAP SYS 1(2) FAULT",
+          "F/CTL FLAPS LOCKED"
+        ]
+      }
+    }
+  ],
+
+  "maintenance_logs": [
+    {
+      "entry_date": "T-4 months",
+      "report": "PIREP: Flap retraction appears slower than normal after takeoff.",
+      "action": "Ground function test performed, no faults found. SFCC reset. Aircraft released for service."
+    },
+    {
+      "entry_date": "T-1 month",
+      "report": "PIREP: Audible 'strange squeaking noise' from right wing during flap extension for landing.",
+      "action": "Visual inspection of RH flap tracks 4 & 5 revealed no cracks. Tracks lubricated per AMM. Ground function test satisfactory."
+    }
+  ],
+
+  "narrative_report": {
+    "source": "CVR Simulation",
+    "transcript": [
+      { "relative_timestamp": "T-5s", "speaker": "PF", "dialogue": "Flaps 3." },
+      { "relative_timestamp": "T-4s", "speaker": "PM", "dialogue": "Speed checked. Flaps 3." },
+      { "relative_timestamp": "T-2s", "sound": "Loud, dry 'CLUNK' sound from right side." },
+      { "relative_timestamp": "T-1s", "speaker": "PM", "dialogue": "Whoa, what was that?" },
+      { "relative_timestamp": "T+0s", "sound": "ECAM warning chime." },
+      { "relative_timestamp": "T+1s", "speaker": "PM", "dialogue": "ECAM warning... Flap System Fault... and... Flaps Locked. We have an asymmetric flap." },
+      { "relative_timestamp": "T+3s", "speaker": "PF", "dialogue": "I have control. Go-around. PAN-PAN, PAN-PAN, PAN-PAN..." }
+    ]
+  },
+
+  "context_data": {
+    "weather": "VMC (Visual Meteorological Conditions), light winds, no turbulence or icing conditions.",
+    "flight_phase_details": "Final Approach, ILS Rwy 25L, 2500 ft, 8 NM from threshold.",
+    "atc_communication": "[Callsign], executing a go-around, we have a flight control issue, request vectors to hold for troubleshooting."
+  },
+
+  "ground_truth": {
+    "is_anomaly": true,
+    "hfacs_analysis": {
+      "winning_level": "Level 3: Unsafe Supervision",
+      "evidence_tags": [
+        "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD",
+        "L2_EQUIPMENT_AND_CONTROLS"
+      ]
+    }
+  }
+}

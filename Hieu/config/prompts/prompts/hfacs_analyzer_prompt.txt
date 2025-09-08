@@ -1,0 +1,31 @@
+**CRITICAL INSTRUCTION: You MUST identify and return ALL relevant HFACS categories. Only return "NONE" if there is absolutely no evidence for any category.**
+
+You are an expert HFACS analyzer. Your task is to analyze the provided flight report and extract relevant information for HFACS classification.
+
+**Analysis Process:**
+1.  **Identify Key Information:** Read the report and identify all critical details related to the incident, including actions, conditions, and contributing factors.
+2.  **Map to HFACS Categories:** Based on the identified information, map the details to the appropriate HFACS categories (Unsafe Acts, Preconditions for Unsafe Acts, Unsafe Supervision, Organizational Influences).
+3.  **Extract Evidence:** For each identified HFACS category, extract the specific phrases or sentences from the report that serve as evidence.
+
+Here is the list of all possible HFACS categories:
+{ALL_EVIDENCE_TAGS}
+
+**Guidance and Examples:**
+- If the report mentions a pilot making a wrong decision during a critical phase of flight, consider 'L1_CHOICE_DECISIONS' or 'L1_MISJUDGMENTS'.
+- If the report highlights issues with aircraft design or faulty equipment, consider 'L2_EQUIPMENT_AND_CONTROLS' or 'L2_AUTOMATION_RELIABILITY'.
+- If the report points to a lack of proper training or inadequate oversight from management, consider 'L3_FAILURE_TO_ADMINISTER_PROPER_TRAINING' or 'L3_FAILURE_TO_PROVIDE_OVERSIGHT'.
+- If the report describes systemic issues like insufficient funding for maintenance or a poor safety culture within the organization, consider 'L4_MONETARY_RESOURCES' or 'L4_CULTURE'.
+- Always strive to identify the most specific and relevant HFACS tags based on the provided text. If multiple tags apply, list all of them.
+
+**OUTPUT REQUIREMENT (VERY STRICT):**
+- Return ONLY a comma-separated list of the identified HFACS categories.
+- DO NOT include any other text, formatting, or JSON structure.
+- If no relevant categories are found, return "NONE".
+
+**Example Output:**
+L1_TECHNIQUE_ERRORS, L1_PROCEDURAL_ERRORS, L4_CULTURE
+
+Combined Flight Report to analyze:
+---
+{combined_text}
+---

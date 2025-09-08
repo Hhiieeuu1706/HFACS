@@ -1,0 +1,70 @@
+{
+  "scenario_name": "Asymmetric Flap due to Torque Shaft Fracture",
+  "description": "During final approach, a torque shaft on the left wing flap mechanism fractures due to metal fatigue. This causes an immediate asymmetric flap condition, triggering the aircraft's protection system and forcing a go-around.",
+  
+  "valid_flight_phases": ["APPROACH_LANDING"],
+
+  "telemetry_events": [
+    {
+      "event_type": "anomaly",
+      "trigger_condition": "flap_lever_position moves to 3",
+      "description": "When flap lever is moved from CONF 2 to CONF 3, the left flap torque shaft fractures.",
+      "parameters": {
+        "left_flap_angle": {
+          "jam_at_value": 16.2
+        },
+        "asymmetry_sensor_delta": {
+          "peak_value": 5.8 
+        },
+        "roll_angle": {
+          "induced_roll_degrees": 4.5
+        },
+        "sidestick_input_lat": {
+          "corrective_input": -0.18
+        },
+        "ecam_alerts": [
+          "F/CTL FLAP SYS FAULT",
+          "F/CTL FLAPS LOCKED"
+        ]
+      }
+    }
+  ],
+
+  "maintenance_logs": [
+    {
+      "entry_date": "T-3 months",
+      "report": "PIREP: Reports 'strange noise and slight vibration' from left wing during flap extension and retraction.",
+      "action": "Ground function test performed, tracks lubricated. Could not replicate the issue. Assessed as within acceptable limits."
+    }
+  ],
+
+  "narrative_report": {
+    "source": "CVR Simulation",
+    "transcript": [
+      { "relative_timestamp": "T-5s", "speaker": "PF", "dialogue": "Flaps 3." },
+      { "relative_timestamp": "T-4s", "sound": "Flap lever movement sound." },
+      { "relative_timestamp": "T-2s", "sound": "Loud, sharp 'CRACK' sound from the left wing area." },
+      { "relative_timestamp": "T-1s", "speaker": "PM", "dialogue": "What was that noise?" },
+      { "relative_timestamp": "T+0s", "sound": "ECAM warning chime." },
+      { "relative_timestamp": "T+1s", "speaker": "PF", "dialogue": "We've got a flap fault. Flaps locked! Okay, I have control. Maintain speed." },
+      { "relative_timestamp": "T+3s", "speaker": "PM", "dialogue": "ECAM confirms, flaps locked. We have an asymmetric condition. Go-around procedure." }
+    ]
+  },
+
+  "context_data": {
+    "weather": "Good weather conditions, scattered clouds.",
+    "flight_phase_details": "Final Approach.",
+    "atc_communication": "[Callsign], PAN-PAN, PAN-PAN, PAN-PAN, declaring an emergency due to a flap asymmetry issue. Executing a go-around. Request vectors to hold at 4000 feet for troubleshooting."
+  },
+
+  "ground_truth": {
+    "is_anomaly": true,
+    "hfacs_analysis": {
+      "winning_level": "Level 3: Unsafe Supervision",
+      "evidence_tags": [
+        "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD",
+        "L2_EQUIPMENT_AND_CONTROLS"
+      ]
+    }
+  }
+}

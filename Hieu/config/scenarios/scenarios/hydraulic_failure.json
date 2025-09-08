@@ -1,0 +1,66 @@
+{
+  "scenario_name": "Slow Flap Operation due to Green Hydraulic System Failure",
+  "description": "A slow, undetected hydraulic leak in the Green system leads to a catastrophic failure. The Yellow hydraulic system takes over flap operation via the PTU, resulting in significantly slower flap deployment and requiring the crew to adopt non-normal procedures.",
+  
+  "valid_flight_phases": ["CLIMB", "CRUISE"],
+
+  "telemetry_events": [
+    {
+      "event_type": "anomaly",
+      "trigger_condition": "random_time_in_phase",
+      "description": "At a random point during climb or cruise, the green hydraulic pressure begins to drop, leading to total failure.",
+      "parameters": {
+        "green_hydraulic_pressure": {
+          "decay_to_zero_seconds": 30
+        },
+        "ptu_status": {
+          "activate_on_demand": true
+        },
+        "flap_deployment_time_seconds": {
+          "multiplier": 2.0
+        },
+        "ecam_alerts": [
+          "HYD G SYS LO PR",
+          "F/CTL SLAT/FLAP SLOW"
+        ]
+      }
+    }
+  ],
+
+  "maintenance_logs": [
+    {
+      "entry_date": "T-5 flights",
+      "report": "Green hydraulic fluid level noted slightly below normal.",
+      "action": "Fluid topped off. Ground leak check performed, no leaks found. Aircraft released for service."
+    }
+  ],
+
+  "narrative_report": {
+    "source": "CVR Simulation",
+    "transcript": [
+      { "relative_timestamp": "T+0s", "sound": "ECAM warning chime." },
+      { "relative_timestamp": "T+1s", "speaker": "PF", "dialogue": "Hydraulic... Green system low pressure." },
+      { "relative_timestamp": "T+5s", "speaker": "PM", "dialogue": "Okay, ECAM actions. Let's see what we've lost... Okay, landing gear gravity extension will be required... and slat and flap slow." },
+      { "relative_timestamp": "T+15s", "speaker": "PF", "dialogue": "Right. Let's brief that. We need to configure much earlier on the approach. Call for flaps at 15 miles out, not 10. And anticipate the gravity gear extension checklist." }
+    ]
+  },
+
+  "context_data": {
+    "weather": "Good.",
+    "flight_phase_details": "Cruise at 10,000 ft, preparing for descent.",
+    "atc_communication": "[Callsign], PAN-PAN, PAN-PAN, PAN-PAN. We have a green hydraulic system failure. We are fully controllable but will have a slow configuration and will require a gravity gear extension. Requesting vectors for a 20-mile final to allow for the checklist. Emergency services on standby would be appreciated."
+  },
+
+  "ground_truth": {
+    "is_anomaly": true,
+    "hfacs_analysis": {
+      "winning_level": "Level 3: Unsafe Supervision",
+      "evidence_tags": [
+        "L1_MISJUDGMENTS",
+        "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD",
+        "L4_PROCEDURES_PROCESS",
+        "L2_EQUIPMENT_AND_CONTROLS"
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+    "is_anomaly": true,
+    "hfacs_analysis": {
+        "winning_level": "Level 3: Unsafe Supervision",
+        "evidence_tags": [
+            "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD",
+            "L2_AUTOMATION_RELIABILITY",
+            "L2_INTERFACES_AND_DISPLAYS"
+        ]
+    }
+}

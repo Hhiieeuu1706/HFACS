@@ -1,0 +1,23 @@
+{
+    "scenario_name": "organizational_training_flaw",
+    "winning_level_got": "No Fault",
+    "winning_level_expected": "Level 2: Preconditions for Unsafe Acts",
+    "tags_got": [],
+    "tags_expected": [
+        "L1_CHOICE_DECISIONS",
+        "L2_CONFUSION",
+        "L2_INADEQUATE_PREPARATION_SKILL",
+        "L3_FAILURE_TO_ADMINISTER_PROPER_TRAINING"
+    ],
+    "scores_per_level": {
+        "Level 1: Unsafe Acts": 0,
+        "Level 2: Preconditions for Unsafe Acts": 0,
+        "Level 3: Unsafe Supervision": 0,
+        "Level 4: Organizational Influences": 0
+    },
+    "tags_per_level": {
+        "Final": []
+    },
+    "match_percentage": 0.0,
+    "status": "COMPLETED"
+}

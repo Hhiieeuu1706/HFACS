@@ -1,0 +1,24 @@
+{
+    "source": "CVR Simulation",
+    "transcript": [
+        {
+            "relative_timestamp": "T+0s",
+            "speaker": "PM",
+            "dialogue": "ECAM, Cabin Pressure System Fault."
+        },
+        {
+            "relative_timestamp": "T+5s",
+            "speaker": "PF",
+            "dialogue": "Okay, monitor it. Probably just a sensor, it should stabilize."
+        },
+        {
+            "relative_timestamp": "T+60s",
+            "sound": "Loud, continuous CABIN ALTITUDE warning chime."
+        },
+        {
+            "relative_timestamp": "T+62s",
+            "speaker": "PM",
+            "dialogue": "Excess Cabin Altitude! Oxygen masks on! Emergency Descent!"
+        }
+    ]
+}

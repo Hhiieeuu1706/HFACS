@@ -1,0 +1,19 @@
+{
+    "source": "CVR Simulation",
+    "transcript": [
+        {
+            "relative_timestamp": "T+0s",
+            "sound": "ECAM warning chime."
+        },
+        {
+            "relative_timestamp": "T+1s",
+            "speaker": "FO",
+            "dialogue": "Flap system fault. Okay, ECAM actions."
+        },
+        {
+            "relative_timestamp": "T+3s",
+            "speaker": "CPT",
+            "dialogue": "It finally failed. I saw that in the logbook."
+        }
+    ]
+}

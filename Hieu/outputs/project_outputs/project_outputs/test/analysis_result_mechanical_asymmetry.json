@@ -1,0 +1,27 @@
+{
+    "scenario_name": "mechanical_asymmetry",
+    "winning_level_got": "Level 3: Unsafe Supervision",
+    "winning_level_expected": "Level 3: Unsafe Supervision",
+    "tags_got": [
+        "L2_EQUIPMENT_AND_CONTROLS",
+        "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD"
+    ],
+    "tags_expected": [
+        "L2_EQUIPMENT_AND_CONTROLS",
+        "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD"
+    ],
+    "scores_per_level": {
+        "Level 1: Unsafe Acts": 0,
+        "Level 2: Preconditions for Unsafe Acts": 20,
+        "Level 3: Unsafe Supervision": 50,
+        "Level 4: Organizational Influences": 0
+    },
+    "tags_per_level": {
+        "Final": [
+            "L2_EQUIPMENT_AND_CONTROLS",
+            "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD"
+        ]
+    },
+    "match_percentage": 100.0,
+    "status": "COMPLETED"
+}

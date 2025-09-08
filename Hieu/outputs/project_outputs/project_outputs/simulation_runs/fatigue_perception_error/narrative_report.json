@@ -1,0 +1,23 @@
+{
+    "source": "CVR Simulation",
+    "transcript": [
+        {
+            "relative_timestamp": "T+0s",
+            "sound": "Single chime (Master Caution)."
+        },
+        {
+            "relative_timestamp": "T+1s",
+            "sound": "(Silence for several seconds)"
+        },
+        {
+            "relative_timestamp": "T+8s",
+            "speaker": "CPT",
+            "dialogue": "Hey, we're rolling. Check flaps... Asymmetry!"
+        },
+        {
+            "relative_timestamp": "T+10s",
+            "speaker": "FO",
+            "dialogue": "Oh... Right. Correcting."
+        }
+    ]
+}

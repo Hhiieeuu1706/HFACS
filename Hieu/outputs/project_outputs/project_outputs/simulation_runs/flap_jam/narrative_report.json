@@ -1,0 +1,38 @@
+{
+    "source": "CVR Simulation",
+    "transcript": [
+        {
+            "relative_timestamp": "T-5s",
+            "speaker": "PF",
+            "dialogue": "Flaps 3."
+        },
+        {
+            "relative_timestamp": "T-4s",
+            "speaker": "PM",
+            "dialogue": "Speed checked. Flaps 3."
+        },
+        {
+            "relative_timestamp": "T-2s",
+            "sound": "Loud, dry 'CLUNK' sound from right side."
+        },
+        {
+            "relative_timestamp": "T-1s",
+            "speaker": "PM",
+            "dialogue": "Whoa, what was that?"
+        },
+        {
+            "relative_timestamp": "T+0s",
+            "sound": "ECAM warning chime."
+        },
+        {
+            "relative_timestamp": "T+1s",
+            "speaker": "PM",
+            "dialogue": "ECAM warning... Flap System Fault... and... Flaps Locked. We have an asymmetric flap."
+        },
+        {
+            "relative_timestamp": "T+3s",
+            "speaker": "PF",
+            "dialogue": "I have control. Go-around. PAN-PAN, PAN-PAN, PAN-PAN..."
+        }
+    ]
+}

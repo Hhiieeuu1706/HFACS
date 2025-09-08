@@ -1,0 +1,19 @@
+{
+    "source": "CVR Simulation",
+    "transcript": [
+        {
+            "relative_timestamp": "T+0s",
+            "sound": "Loud bang followed by severe shuddering vibration."
+        },
+        {
+            "relative_timestamp": "T+1s",
+            "speaker": "CPT",
+            "dialogue": "Engine failure! Engine 1 fire!"
+        },
+        {
+            "relative_timestamp": "T+2s",
+            "speaker": "FO",
+            "dialogue": "Master warning! ECAM, engine fire procedure."
+        }
+    ]
+}

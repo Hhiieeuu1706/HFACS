@@ -1,0 +1,32 @@
+{
+    "scenario_name": "supervisory_decision_error",
+    "winning_level_got": "Level 3: Unsafe Supervision",
+    "winning_level_expected": "Level 3: Unsafe Supervision",
+    "tags_got": [
+        "L1_FAILED_TO_COMPLY_MANUALS",
+        "L2_EQUIPMENT_AND_CONTROLS",
+        "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD",
+        "L4_OPERATIONS_PROCESS"
+    ],
+    "tags_expected": [
+        "L2_EQUIPMENT_AND_CONTROLS",
+        "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD",
+        "L4_POLICIES"
+    ],
+    "scores_per_level": {
+        "Level 1: Unsafe Acts": 30,
+        "Level 2: Preconditions for Unsafe Acts": 20,
+        "Level 3: Unsafe Supervision": 50,
+        "Level 4: Organizational Influences": 35
+    },
+    "tags_per_level": {
+        "Final": [
+            "L1_FAILED_TO_COMPLY_MANUALS",
+            "L2_EQUIPMENT_AND_CONTROLS",
+            "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD",
+            "L4_OPERATIONS_PROCESS"
+        ]
+    },
+    "match_percentage": 78.57,
+    "status": "COMPLETED"
+}

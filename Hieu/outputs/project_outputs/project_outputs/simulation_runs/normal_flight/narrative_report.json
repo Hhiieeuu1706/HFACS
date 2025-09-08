@@ -1,0 +1,15 @@
+{
+    "source": "CVR Simulation",
+    "transcript": [
+        {
+            "relative_timestamp": "T-30m",
+            "speaker": "PF",
+            "dialogue": "Weather looks good ahead."
+        },
+        {
+            "relative_timestamp": "T-1m",
+            "speaker": "PM",
+            "dialogue": "Cleared to land runway 25L."
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+{
+  "scenario_name": "Normal Flight Profile",
+  "description": "A standard, uneventful flight from SGN to DAD with no anomalies.",
+  
+  "valid_flight_phases": ["TAKEOFF_CLIMB", "CRUISE", "APPROACH_LANDING"],
+
+  "telemetry_events": [],
+
+  "maintenance_logs": [
+    {
+      "entry_date": "T-1 day",
+      "report": "Standard pre-flight check.",
+      "action": "All systems nominal. Aircraft released for service."
+    }
+  ],
+
+  "narrative_report": {
+    "source": "CVR Simulation",
+    "transcript": [
+      { "relative_timestamp": "T-30m", "speaker": "PF", "dialogue": "Weather looks good ahead." },
+      { "relative_timestamp": "T-1m", "speaker": "PM", "dialogue": "Cleared to land runway 25L." }
+    ]
+  },
+
+  "context_data": {
+    "weather": "VMC, clear skies.",
+    "flight_phase_details": "Normal flight.",
+    "atc_communication": "Standard communications throughout the flight."
+  },
+
+  "ground_truth": {
+    "is_anomaly": false,
+    "hfacs_analysis": {
+      "winning_level": "No Fault",
+      "evidence_tags": []
+    }
+  }
+}

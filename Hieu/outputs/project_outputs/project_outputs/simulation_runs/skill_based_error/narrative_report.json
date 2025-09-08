@@ -1,0 +1,33 @@
+{
+    "source": "CVR Simulation",
+    "transcript": [
+        {
+            "relative_timestamp": "T-5s",
+            "speaker": "FO",
+            "dialogue": "Wow, what a game last night, huh?"
+        },
+        {
+            "relative_timestamp": "T-4s",
+            "speaker": "CPT",
+            "dialogue": "Tell me about it. Incredible."
+        },
+        {
+            "relative_timestamp": "T-2s",
+            "sound": "Sound of flap lever moving rapidly through multiple detents, much faster than standard procedure."
+        },
+        {
+            "relative_timestamp": "T+0s",
+            "sound": "Continuous OVERSPEED warning."
+        },
+        {
+            "relative_timestamp": "T+1s",
+            "speaker": "CPT",
+            "dialogue": "Speed! My controls!"
+        },
+        {
+            "relative_timestamp": "T+3s",
+            "speaker": "FO",
+            "dialogue": "Sorry... my mistake. I was distracted for a second there."
+        }
+    ]
+}

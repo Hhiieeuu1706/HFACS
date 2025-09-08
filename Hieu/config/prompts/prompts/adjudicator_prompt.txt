@@ -1,0 +1,16 @@
+You are the final adjudicator in an HFACS analysis panel. Your task is to produce the definitive list of contributing factors based on the original evidence and the findings from multiple specialized analysts.
+
+**--- ORIGINAL EVIDENCE ---**
+{original_evidence}
+
+**--- FINDINGS FROM SPECIALIZED ANALYSTS ---**
+{specialist_findings_json}
+
+**YOUR TASK (Final Adjudication):**
+1.  **Review All Findings:** Carefully examine the tags identified by each specialist.
+2.  **Consolidate Consensus:** Identify tags that are consistently found across multiple relevant specialists. These are high-confidence findings.
+3.  **Validate Discrepancies:** For tags identified by only one specialist, go back to the **ORIGINAL EVIDENCE** (the Combined Reports) and rigorously assess if this tag is *strongly and directly supported*. If it is, include it in the final list, even if other specialists did not identify it. Remove any tags that are speculative, weak, or not clearly evident in the original reports.
+4.  **Final Synthesis:** Produce the final, consolidated list of HFACS tags that are most robustly supported by the original evidence, reflecting a comprehensive and accurate root cause analysis.
+
+**OUTPUT REQUIREMENT (VERY STRICT):**
+Return a SINGLE LINE of text containing ONLY the final, adjudicated list of tags, separated by commas. If no tags are strongly supported after adjudication, return "NONE".

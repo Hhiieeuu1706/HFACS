@@ -1,0 +1,12 @@
+[
+    {
+        "entry_date": "T-4 months",
+        "report": "PIREP: Flap retraction appears slower than normal after takeoff.",
+        "action": "Ground function test performed, no faults found. SFCC reset. Aircraft released for service."
+    },
+    {
+        "entry_date": "T-1 month",
+        "report": "PIREP: Audible 'strange squeaking noise' from right wing during flap extension for landing.",
+        "action": "Visual inspection of RH flap tracks 4 & 5 revealed no cracks. Tracks lubricated per AMM. Ground function test satisfactory."
+    }
+]

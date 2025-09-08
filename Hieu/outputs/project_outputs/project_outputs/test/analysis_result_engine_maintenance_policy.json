@@ -1,0 +1,37 @@
+{
+    "scenario_name": "engine_maintenance_policy",
+    "winning_level_got": "Level 4: Organizational Influences",
+    "winning_level_expected": "Level 4: Organizational Influences",
+    "tags_got": [
+        "L1_ATTENTION_FAILURES",
+        "L2_EQUIPMENT_AND_CONTROLS",
+        "L2_VIBRATION",
+        "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD",
+        "L4_MONETARY_RESOURCES",
+        "L4_POLICIES"
+    ],
+    "tags_expected": [
+        "L2_EQUIPMENT_AND_CONTROLS",
+        "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD",
+        "L4_MONETARY_RESOURCES",
+        "L4_POLICIES"
+    ],
+    "scores_per_level": {
+        "Level 1: Unsafe Acts": 15,
+        "Level 2: Preconditions for Unsafe Acts": 30,
+        "Level 3: Unsafe Supervision": 50,
+        "Level 4: Organizational Influences": 80
+    },
+    "tags_per_level": {
+        "Final": [
+            "L1_ATTENTION_FAILURES",
+            "L2_EQUIPMENT_AND_CONTROLS",
+            "L2_VIBRATION",
+            "L3_FAILURE_TO_CORRECT_A_SAFETY_HAZARD",
+            "L4_MONETARY_RESOURCES",
+            "L4_POLICIES"
+        ]
+    },
+    "match_percentage": 90.0,
+    "status": "COMPLETED"
+}

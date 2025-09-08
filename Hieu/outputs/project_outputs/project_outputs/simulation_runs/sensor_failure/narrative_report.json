@@ -1,0 +1,34 @@
+{
+    "source": "CVR Simulation",
+    "transcript": [
+        {
+            "relative_timestamp": "T-3s",
+            "speaker": "PF",
+            "dialogue": "Flaps 1."
+        },
+        {
+            "relative_timestamp": "T-2s",
+            "speaker": "PM",
+            "dialogue": "Speed checked, Flaps 1."
+        },
+        {
+            "relative_timestamp": "T+0s",
+            "sound": "ECAM warning chime (no unusual mechanical sounds)."
+        },
+        {
+            "relative_timestamp": "T+1s",
+            "speaker": "PM",
+            "dialogue": "We have an ECAM... Flight Controls... Flap System 2 Fault."
+        },
+        {
+            "relative_timestamp": "T+3s",
+            "speaker": "PF",
+            "dialogue": "Okay, let's see. The flaps appear to be out. E/WD shows flaps at 1. Status page?"
+        },
+        {
+            "relative_timestamp": "T+6s",
+            "speaker": "PM",
+            "dialogue": "Status page confirms. We have a fault, but flaps are extended to CONF 1. We'll need to advise ATC of a non-normal configuration."
+        }
+    ]
+}

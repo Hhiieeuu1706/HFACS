@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Dashboard</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #1a1a2e;
+            --card-bg: #16213e;
+            --primary-text: #e9ecef;
+            --secondary-text: #adb5bd;
+            --border-color: #0f3460;
+            --accent-blue: #3a7bd5;
+            --accent-green: #28a745;
+            --accent-red: #dc3545;
+            --accent-yellow: #ffc107;
+        }
+        body { 
+            background-color: var(--dark-bg);
+            color: var(--primary-text);
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            overflow: hidden; /* Prevent scrollbar during loading */
+        }
+        .card { 
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 12px 0 rgba(0,0,0,0.4);
+            border-radius: 0.5rem;
+        }
+        .card-header {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid var(--border-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        #main-header {
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+        #flight-status-indicator {
+            width: 18px; height: 18px; border-radius: 50%; transition: background-color 0.5s ease;
+        }
+        .status-green { background-color: var(--accent-green); }
+        .status-yellow { background-color: var(--accent-yellow); }
+        .status-red { background-color: var(--accent-red); }
+        .primary-metric h5 { font-size: 2.25rem; font-weight: 500; }
+        .secondary-metric h5 { font-size: 1.5rem; font-weight: 400; }
+        .metric small { color: var(--secondary-text); text-transform: uppercase; font-size: 0.8rem; }
+        .progress-bar { background-color: var(--accent-blue); }
+        #messages-container .list-group-item {
+            background-color: transparent;
+            border-color: var(--border-color);
+            color: var(--primary-text);
+            font-family: 'SF Mono', 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            padding: 0.6rem 1.2rem;
+        }
+        .list-group-item.priority-high {
+            font-weight: bold;
+            color: var(--accent-red) !important;
+            animation: flash-red 1.5s infinite;
+        }
+        .list-group-item.log-clickable:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+        .list-group-item-success { color: var(--accent-green) !important; }
+        @keyframes flash-red {
+            0%, 100% { background-color: transparent; }
+            50% { background-color: rgba(220, 53, 69, 0.2); }
+        }
+        .modal-content { background-color: var(--card-bg); border-color: var(--border-color); }
+        .modal-header { border-bottom-color: var(--border-color); }
+
+        /* Loading Overlay */
+        #loading-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--dark-bg);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease-out;
+            opacity: 1;
+        }
+        #loading-overlay.hidden { opacity: 0; visibility: hidden; }
+        .spinner-border { color: var(--accent-blue); width: 3rem; height: 3rem; }
+        #loading-message { color: var(--primary-text); margin-top: 1rem; font-size: 1.2rem; }
+
+        /* G-Force Panel */
+        #g-force-panel .g-value { font-size: 2rem; font-weight: bold; }
+        #g-force-panel .g-max-min { font-size: 0.9rem; color: var(--secondary-text); }
+        .g-normal { color: var(--accent-green); }
+        .g-exceeded { color: var(--accent-red); }
+
+        /* Procedural Guidance */
+        #procedure-guidance-card .list-group-item { font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div id="loading-message">Connecting to Live Telemetry...</div>
+    </div>
+
+    <div class="container-fluid p-4">
+        <div class="card">
+            <div id="main-header" class="card-header text-center d-flex justify-content-center align-items-center">
+                <div id="flight-status-indicator" class="status-green me-3" title="Flight Status"></div>
+                <span class="flex-grow-1">FLIGHT DASHBOARD | VietJet Air | A320 | VN-A688 | SGN → DAD</span>
+                <button id="run-simulation-btn" class="btn btn-sm btn-primary ms-3">Run New Simulation</button>
+                <i id="audio-status-icon" class="fas fa-volume-mute ms-3" title="Audio Muted. Click anywhere to enable."></i>
+            </div>
+            <div class="card-body">
+                <!-- Flight Status Metrics -->
+                <div class="row text-center align-items-center mb-4">
+                    <div class="col-md-4 metric primary-metric">
+                        <h5><span id="altitude">0</span> ft</h5>
+                        <small>Altitude</small>
+                    </div>
+                    <div class="col-md-4 metric primary-metric">
+                        <h5><span id="airspeed">0</span> kts</h5>
+                        <small>Airspeed</small>
+                    </div>
+                    <div class="col-md-2 metric secondary-metric">
+                        <h5><span id="g-force">0</span> G</h5>
+                        <small>G-Force</small>
+                    </div>
+                    <div class="col-md-2 metric secondary-metric">
+                        <h5><span id="phase">-</span></h5>
+                        <small>Phase</small>
+                    </div>
+                </div>
+
+                <div class="progress mb-4" style="height: 5px; background-color: var(--border-color);">
+                    <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;"></div>
+                </div>
+
+                <div class="row">
+                    <!-- Charts -->
+                    <div class="col-md-8">
+                        <div class="card" style="height: 75vh;">
+                            <div class="card-body" style="position: relative;">
+                                <canvas id="telemetryChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Messages -->
+                    <div class="col-md-4 d-flex flex-column" id="messages-container">
+                        <div id="anomaly-log-card" class="card border-danger mb-3" style="display: none;">
+                            <div class="card-header bg-danger text-white"><i class="fas fa-exclamation-triangle"></i> ANOMALY LOG</div>
+                            <ul id="anomaly-log-list" class="list-group list-group-flush" style="max-height: 150px; overflow-y: auto;"></ul>
+                        </div>
+                        
+                        <!-- G-Force Panel -->
+                        <div id="g-force-panel" class="card mb-3">
+                            <div class="card-header"><i class="fas fa-tachometer-alt"></i> G-FORCE MONITOR</div>
+                            <div class="card-body text-center">
+                                <h5 class="g-value"><span id="current-g-force">1.0</span> G</h5>
+                                <div class="g-max-min">
+                                    Max: <span id="max-g-force">1.0</span> G | Min: <span id="min-g-force">1.0</span> G
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Procedural Guidance -->
+                        <div id="procedure-guidance-card" class="card mb-3" style="display: none;">
+                            <div class="card-header bg-warning text-dark"><i class="fas fa-clipboard-list"></i> PROCEDURAL GUIDANCE</div>
+                            <ul id="procedure-guidance-list" class="list-group list-group-flush"></ul>
+                        </div>
+
+                        <div class="card mb-3 flex-grow-1">
+                            <div class="card-header"><i class="fas fa-satellite-dish"></i> OCC MESSAGES</div>
+                            <ul id="occ-messages" class="list-group list-group-flush" style="overflow-y: auto;"></ul>
+                        </div>
+                        <div class="card flex-grow-1">
+                            <div class="card-header"><i class="fas fa-tablet-alt"></i> EFB ALERTS</div>
+                            <ul id="efb-messages" class="list-group list-group-flush" style="overflow-y: auto;"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Drill-down Modal -->
+    <div class="modal fade" id="drilldownModal" tabindex="-1" aria-labelledby="drilldownModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="drilldownModalLabel">Sub-System Analysis Chart</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="drilldown-chart-img" src="" class="img-fluid" alt="Analysis Chart">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.0.2"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
